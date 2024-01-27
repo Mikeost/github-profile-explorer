@@ -18,7 +18,7 @@ To get started, clone the repository and run the following commands:
 
 ```bash
 git clone https://github.com/Mikeost/github-profile-explorer.git
-cd github-explorer-cli
+cd github-profile-explorer
 cargo build --release
 ./target/release/github-profile-explorer <type> <name>
 ```
