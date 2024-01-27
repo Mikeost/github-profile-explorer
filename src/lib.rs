@@ -1,4 +1,4 @@
-use reqwest::{blocking::{Client, ClientBuilder, Response}};
+use reqwest::blocking::Client;
 use serde::Deserialize;
 
 pub struct Config {
@@ -25,16 +25,16 @@ impl Config {
 #[derive(Deserialize)]
 pub struct OrganizationInfo {
     #[serde(rename = "name")]
-    repo_name: String,
+    repo_name: Option<String>,
 
     #[serde(rename = "description")]
-    repo_description: String,
+    repo_description: Option<String>,
 
     #[serde(rename = "updated_at")]
-    repo_last_update: String,
+    repo_last_update: Option<String>,
 
     #[serde(rename = "language")]
-    repo_language: String
+    repo_language: Option<String>
 }
 
 pub fn run(config: Config) -> Result<(), Box<dyn std::error::Error>> {
@@ -66,7 +66,7 @@ pub fn list_organization_repositories(http_client: Client, name: &str) {
                     Ok(text) => {
                         match serde_json::from_str::<Vec<OrganizationInfo>>(&text) {
                             Ok(organization_info) => info_output(organization_info),
-                            Err(_) => println!("Error deserializing JSON."),
+                            Err(err) => println!("Error deserializing JSON.: {}", err),
                         }
                     },
                     Err(_) => println!("Error reading response text.")
@@ -83,10 +83,30 @@ pub fn list_organization_repositories(http_client: Client, name: &str) {
 
 pub fn info_output(organization_info: Vec<OrganizationInfo>) {
     for info in organization_info {
-        println!("Repo name: {}", info.repo_name);
-        println!("Repo description: {}", info.repo_description);
-        println!("Repo last update: {}", info.repo_last_update);
-        println!("Repo language: {}", info.repo_language);
+        if let Some(repo_name) = info.repo_name {
+            println!("Repo name: {}", repo_name);
+        } else {
+            println!("Repo name: N/A");
+        }
+
+        if let Some(repo_description) = info.repo_description {
+            println!("Repo description: {}", repo_description);
+        } else {
+            println!("Repo description: N/A");
+        }
+
+        if let Some(repo_last_update) = info.repo_last_update {
+            println!("Repo last update: {}", repo_last_update);
+        } else {
+            println!("Repo last update: N/A");
+        }
+
+        if let Some(repo_language) = info.repo_language {
+            println!("Repo language: {}", repo_language);
+        } else {
+            println!("Repo language: N/A");
+        }
+
         println!("=======================================================");
     }
 }
