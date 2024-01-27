@@ -2,7 +2,7 @@ use reqwest::blocking::Client;
 use serde::Deserialize;
 
 pub struct Config {
-    pub query: String,
+    pub request: String,
     pub name: String
 }
 
@@ -12,18 +12,18 @@ impl Config {
             return Err("not enough arguments");
         }
 
-        let query = args[1].clone();
+        let request = args[1].clone();
         let name = args[2].clone();
 
         Ok(Config {
-            query,
+            request,
             name
         })
     }
 }
 
 #[derive(Deserialize)]
-pub struct OrganizationInfo {
+pub struct ProfileInfo {
     #[serde(rename = "name")]
     repo_name: Option<String>,
 
@@ -46,10 +46,12 @@ pub fn run(config: Config) -> Result<(), Box<dyn std::error::Error>> {
 
     let http_client = Client::builder().user_agent(APP_USER_AGENT).build()?;
 
-    if config.query == "org" {
+    if config.request == "org" {
         list_organization_repositories(http_client, &config.name);
-    } else if config.query == "user" {
-        // list_user_repositories();
+    } else if config.request == "user" {
+        list_user_repositories(http_client, &config.name);
+    } else {
+        Err("The request type is not valid. Choose either 'org' or 'user'")?
     }
 
     Ok(())
@@ -58,21 +60,32 @@ pub fn run(config: Config) -> Result<(), Box<dyn std::error::Error>> {
 pub fn list_organization_repositories(http_client: Client, name: &str) {
     let url = format!("https://api.github.com/orgs/{}/repos", name); 
     let http_result = http_client.get(&url).send();
-    
+
+    handle_http_response(http_result);
+}
+
+pub fn list_user_repositories(http_client: Client, name: &str) {
+    let url = format!("https://api.github.com/users/{}/repos", name); 
+    let http_result = http_client.get(&url).send();
+
+    handle_http_response(http_result);
+}
+
+pub fn handle_http_response(http_result: Result<reqwest::blocking::Response, reqwest::Error>) {
     match http_result {
         Ok(response) => {
             if response.status() == reqwest::StatusCode::OK {
                 match response.text() {
                     Ok(text) => {
-                        match serde_json::from_str::<Vec<OrganizationInfo>>(&text) {
-                            Ok(organization_info) => info_output(organization_info),
+                        match serde_json::from_str::<Vec<ProfileInfo>>(&text) {
+                            Ok(profile_info) => info_output(profile_info),
                             Err(err) => println!("Error deserializing JSON.: {}", err),
                         }
                     },
                     Err(_) => println!("Error reading response text.")
                 }
             } else if response.status() == reqwest::StatusCode::NOT_FOUND {
-                println!("This organization was not found.")
+                println!("This profile was not found.")
             }
         }
         Err(err) => {
@@ -81,8 +94,8 @@ pub fn list_organization_repositories(http_client: Client, name: &str) {
     }
 }
 
-pub fn info_output(organization_info: Vec<OrganizationInfo>) {
-    for info in organization_info {
+pub fn info_output(profile_info: Vec<ProfileInfo>) {
+    for info in profile_info {
         if let Some(repo_name) = info.repo_name {
             println!("Repo name: {}", repo_name);
         } else {
