@@ -1,6 +1,8 @@
 # GitHub Profile Explorer
 
-CLI utility for exploring GitHub profiles and repositories.
+<p align="center">
+  <img src="https://github.com/Mikeost/github-profile-explorer/assets/68986785/b3b28a6b-a63b-48ed-a6b4-61b3eaed2d5e" height="250">
+</p>
 
 ## Description
 
