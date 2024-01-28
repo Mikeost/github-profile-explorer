@@ -30,11 +30,17 @@ pub struct ProfileInfo {
     #[serde(rename = "description")]
     repo_description: Option<String>,
 
-    #[serde(rename = "updated_at")]
+    topics: Vec<String>,
+
+    #[serde(rename = "pushed_at")]
     repo_last_update: Option<String>,
 
     #[serde(rename = "language")]
-    repo_language: Option<String>
+    repo_language: Option<String>,
+
+    stargazers_count: i32,
+
+    forks_count: i32
 }
 
 pub fn run(config: Config) -> Result<(), Box<dyn std::error::Error>> {
@@ -108,6 +114,16 @@ pub fn info_output(profile_info: Vec<ProfileInfo>) {
             println!("Repo description: N/A");
         }
 
+        if info.topics.len() == 0 {
+            println!("Repo topics: N/A");
+        } else {
+            print!("Repo topics: ");
+            for topic in info.topics {
+                print!("{} ", topic);
+            }
+            println!();
+        }
+
         if let Some(repo_last_update) = info.repo_last_update {
             println!("Repo last update: {}", repo_last_update);
         } else {
@@ -119,6 +135,10 @@ pub fn info_output(profile_info: Vec<ProfileInfo>) {
         } else {
             println!("Repo language: N/A");
         }
+
+        println!("Repo count of stars: {}", info.stargazers_count);
+
+        println!("Repo count of forks: {}", info.forks_count);
 
         println!("=======================================================");
     }

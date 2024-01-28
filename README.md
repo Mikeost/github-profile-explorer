@@ -27,7 +27,7 @@ Where `type` is one of the following:
 - `org`: Retrieve information about a GitHub organization.
 - `user`: Retrieve information about a GitHub user.
 
-Replace `name` with the corresponding GitHub organization name you want to explore.
+Replace `name` with the corresponding GitHub organization/user name you want to explore.
 
 ### For example
 
@@ -36,20 +36,29 @@ Replace `name` with the corresponding GitHub organization name you want to explo
 ```
 
 ```
-Repo name: Math-Algorithms
-Repo description: Math library with algorithms for C++
-Repo last update: 2023-09-06T21:18:02Z
+Repo name: Gradify
+Repo description: Information system for accounting for the work of an education institution
+Repo topics: college database-management-system information-system learning 
+Repo last update: 2023-12-11T19:46:06Z
 Repo language: C++
+Repo count of stars: 4
+Repo count of forks: 1
+=======================================================
+Repo name: Math-Algorithms
+Repo description: Math library with algorithms for c++
+Repo topics: algorithms cpp math mathematics 
+Repo last update: 2023-09-06T04:40:24Z
+Repo language: C++
+Repo count of stars: 6
+Repo count of forks: 0
 =======================================================
 Repo name: ipCalculator
 Repo description: ipCalculator
-Repo last update: 2022-08-31T06:47:26Z
+Repo topics: N/A
+Repo last update: 2022-09-20T06:49:45Z
 Repo language: C++
-=======================================================
-Repo name: Gradify
-Repo description: Information system for accounting for the work of an education institution
-Repo last update: 2024-01-06T13:52:39Z
-Repo language: C++
+Repo count of stars: 1
+Repo count of forks: 0
 =======================================================
 ```
 
@@ -58,30 +67,29 @@ Repo language: C++
 ```
 
 ```
-Repo name: arduino-projects
-Repo description: arduino projects
-Repo last update: 2023-07-26T16:38:26Z
-Repo language: C++
-=======================================================
 Repo name: github-profile-explorer
 Repo description: CLI utility for exploring GitHub profiles and repositories.
-Repo last update: 2024-01-27T13:34:53Z
+Repo topics: explorer github statistics 
+Repo last update: 2024-01-27T22:14:09Z
 Repo language: Rust
+Repo count of stars: 0
+Repo count of forks: 0
 =======================================================
 Repo name: MatPlotLibPython
 Repo description: Data visualization using the Matplotlib
-Repo last update: 2023-08-16T08:18:29Z
+Repo topics: charts matplotlib python statistics 
+Repo last update: 2023-02-10T15:23:41Z
 Repo language: Python
+Repo count of stars: 3
+Repo count of forks: 1
 =======================================================
-Repo name: mikeost.github.io
-Repo description: website
-Repo last update: 2022-07-22T10:01:46Z
-Repo language: HTML
-=======================================================
-Repo name: QtNotepad
-Repo description: Qt notepad
-Repo last update: 2024-01-16T11:31:54Z
+Repo name: Sudoku-Solver
+Repo description: Simple sudoku solver
+Repo topics: backtracking-algorithm cpp sudoku-solver 
+Repo last update: 2023-06-28T12:36:00Z
 Repo language: C++
+Repo count of stars: 0
+Repo count of forks: 0
 =======================================================
 ...
 ```
