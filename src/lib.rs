@@ -49,26 +49,30 @@ pub fn run(config: Config) -> Result<(), Box<dyn std::error::Error>> {
     let http_client = Client::builder().user_agent(APP_USER_AGENT).build()?;
 
     match &config.request[..] {
-        "org" => list_organization_repositories(http_client, &config.name),
-        "user" => list_user_repositories(http_client, &config.name),
+        "org" => list_organization_repositories(http_client, &config.name)?,
+        "user" => list_user_repositories(http_client, &config.name)?,
         _ => Err("The request type is not valid. Choose either 'org' or 'user'")?,
     }
 
     Ok(())
 }
 
-pub fn list_organization_repositories(http_client: Client, name: &str) {
+pub fn list_organization_repositories(http_client: Client, name: &str) -> Result<(), reqwest::Error> {
     let url = format!("https://api.github.com/orgs/{}/repos", name); 
     let http_result = http_client.get(&url).send();
 
     handle_http_response(http_result);
+
+    Ok(())
 }
 
-pub fn list_user_repositories(http_client: Client, name: &str) {
+pub fn list_user_repositories(http_client: Client, name: &str) -> Result<(), reqwest::Error> {
     let url = format!("https://api.github.com/users/{}/repos", name); 
     let http_result = http_client.get(&url).send();
 
     handle_http_response(http_result);
+
+    Ok(())
 }
 
 pub fn handle_http_response(http_result: Result<reqwest::blocking::Response, reqwest::Error>) {
