@@ -7,7 +7,7 @@
 <p align="center">
   <a href="https://github.com/Mikeost/github-profile-explorer/actions/workflows/rust.yml"><img src="https://img.shields.io/github/actions/workflow/status/mikeost/github-profile-explorer/rust.yml?label=build%20%26%20tests" alt="Build Status"></a>
   <a href="https://github.com/Mikeost/github-profile-explorer?tab=MIT-1-ov-file#readme"><img src="https://img.shields.io/github/license/mikeost/github-profile-explorer" alt="License"></a>
-  <img src="https://img.shields.io/crates/msrv/reqwest/0.11.23" alt="Minimum suppported rust version" >
+  <img src="https://img.shields.io/crates/msrv/reqwest/0.11.23" alt="Minimum suppported rust version">
   <a href="https://app.codacy.com/gh/Mikeost/github-profile-explorer/dashboard?utm_source=gh&utm_medium=referral&utm_content=&utm_campaign=Badge_grade"><img src="https://app.codacy.com/project/badge/Grade/26fe53ed9fbe4b3ebc1a5e9fda20a1a8" alt="Codacy Badge"></a>
   <img src="https://tokei.rs/b1/github/mikeost/github-profile-explorer?category=code&style=flat" alt="Lines of Code">
   <img src="https://img.shields.io/github/languages/code-size/mikeost/github-profile-explorer.svg" alt="Code size"/>
@@ -31,8 +31,8 @@ To get started, clone the repository and run the following commands:
 ```bash
 git clone https://github.com/Mikeost/github-profile-explorer.git
 cd github-profile-explorer
-cargo build --release
-./target/release/github-profile-explorer <type> <name>
+cargo install --path .
+gpe <type> <name>
 ```
 
 Where `type` is one of the following:
@@ -44,10 +44,8 @@ Replace `name` with the corresponding GitHub organization/user name you want to 
 ### For example
 
 ```bash
-./target/release/github-profile-explorer org MikeostCorp
-```
+$ gpe org MikeostCorp
 
-```
 Repo name: Gradify
 Repo description: Information system for accounting for the work of an education institution
 Repo topics: college database-management-system information-system learning 
@@ -75,10 +73,8 @@ Repo count of forks: 0
 ```
 
 ```bash
-./target/release/github-profile-explorer user Mikeost
-```
+$ gpe user Mikeost
 
-```
 Repo name: github-profile-explorer
 Repo description: CLI utility for exploring GitHub profiles and repositories.
 Repo topics: explorer github statistics 
