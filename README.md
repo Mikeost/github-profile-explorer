@@ -1,11 +1,18 @@
 # GitHub Profile Explorer
 
 <p align="center">
-  <img src="https://github.com/Mikeost/github-profile-explorer/assets/68986785/b3b28a6b-a63b-48ed-a6b4-61b3eaed2d5e" height="250">
+  <a href="#github-profile-explorer"><img src="https://github.com/Mikeost/github-profile-explorer/assets/68986785/b3b28a6b-a63b-48ed-a6b4-61b3eaed2d5e" height="250"></a>
 </p>
 
-![workflow status](https://img.shields.io/github/actions/workflow/status/mikeost/github-profile-explorer/rust.yml?label=build%20%26%20tests)
-![license](https://img.shields.io/github/license/mikeost/github-profile-explorer)
+<p align="center">
+  <a href="https://github.com/Mikeost/github-profile-explorer/actions/workflows/rust.yml"><img src="https://img.shields.io/github/actions/workflow/status/mikeost/github-profile-explorer/rust.yml?label=build%20%26%20tests" alt="Build Status"></a>
+  <a href="https://github.com/Mikeost/github-profile-explorer?tab=MIT-1-ov-file#readme"><img src="https://img.shields.io/github/license/mikeost/github-profile-explorer" alt="License"></a>
+  <img src="https://img.shields.io/crates/msrv/reqwest/0.11.23" alt="Minimum suppported rust version" >
+  <a href="https://app.codacy.com/gh/Mikeost/github-profile-explorer/dashboard?utm_source=gh&utm_medium=referral&utm_content=&utm_campaign=Badge_grade"><img src="https://app.codacy.com/project/badge/Grade/26fe53ed9fbe4b3ebc1a5e9fda20a1a8" alt="Codacy Badge"></a>
+  <img src="https://tokei.rs/b1/github/mikeost/github-profile-explorer?category=code&style=flat" alt="Lines of Code">
+  <img src="https://img.shields.io/github/languages/code-size/mikeost/github-profile-explorer.svg" alt="Code size"/>
+  <img src="https://img.shields.io/github/repo-size/mikeost/github-profile-explorer.svg" alt="GitHub repo size"/>
+</p>
 
 ## Description
 
