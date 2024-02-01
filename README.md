@@ -43,7 +43,7 @@ Replace `name` with the corresponding GitHub organization/user name you want to 
 
 ### For example
 
-```bash
+```
 $ gpe org MikeostCorp
 
 Repo name: Gradify
@@ -72,7 +72,7 @@ Repo count of forks: 0
 =======================================================
 ```
 
-```bash
+```
 $ gpe user Mikeost
 
 Repo name: github-profile-explorer
