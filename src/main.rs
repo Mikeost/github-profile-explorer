@@ -1,10 +1,11 @@
-use std::{env, process};
+use std::process;
 use github_profile_explorer::Config;
+use clap::Parser;
 
 fn main() {
-    let args: Vec<String> = env::args().collect();
+    let args: Config = Config::parse();
 
-    let config = Config::build(&args).unwrap_or_else(|err| {
+    let config = Config::build(args).unwrap_or_else(|err| {
         eprintln!("Problem parsing arguments: {}.", err);
         process::exit(1);
     });

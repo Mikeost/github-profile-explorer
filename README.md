@@ -26,78 +26,126 @@ GitHub Profile Explorer is a command-line interface tool that allows you to retr
 
 ## Usage
 
-To get started, clone the repository and run the following commands:
+To get started, run the following commands:
 
 ```bash
 git clone https://github.com/Mikeost/github-profile-explorer.git
 cd github-profile-explorer
 cargo install --path .
-gpe <type> <name>
+gpe <REQUEST> <NAME> [OPTIONS]
 ```
 
-Where `type` is one of the following:
-- `org`: Retrieve information about a GitHub organization.
-- `user`: Retrieve information about a GitHub user.
+| Argument | Command | Description |
+| ------ | ------- | ----------- |
+| Request | `org`, `user` | Retrieve information about a GitHub organization/user |
+| Name | `name` | The corresponding GitHub organization/user name you want to explore |
 
-Replace `name` with the corresponding GitHub organization/user name you want to explore.
+<hr>
 
-### For example
+| Option | Command | Description |
+| ------ | ------- | ----------- |
+| Sort | `-s, --sort <SORT>` | The property to sort the results by (created/updated/pushed/full_name) [default: created] |
+| Direction | `-d, --direction <DIRECTION>` | The order to sort by (asc/desc) [default: desc] |
+| Count Per Page | `-c, --count-per-page <COUNT_PER_PAGE>` | Number of results per page [default: 30, max: 100] |
+| Page Number | `-p, --page-number <PAGE_NUMBER>` | Number of page [default: 1] |
+| Help | `-h, --help` | Print help |
+| Verion | `-V, --version` | Print version |
 
-```
-$ gpe org MikeostCorp
 
-Repo name: Gradify
-Repo description: Information system for accounting for the work of an education institution
-Repo topics: college database-management-system information-system learning 
-Repo last update: 2023-12-11T19:46:06Z
-Repo language: C++
-Repo count of stars: 4
-Repo count of forks: 1
-=======================================================
-Repo name: Math-Algorithms
-Repo description: Math library with algorithms for c++
-Repo topics: algorithms cpp math mathematics 
-Repo last update: 2023-09-06T04:40:24Z
-Repo language: C++
-Repo count of stars: 6
-Repo count of forks: 0
-=======================================================
-Repo name: ipCalculator
-Repo description: ipCalculator
-Repo topics: N/A
-Repo last update: 2022-09-20T06:49:45Z
-Repo language: C++
-Repo count of stars: 1
-Repo count of forks: 0
-=======================================================
-```
+## Examples
+
+### Example of retrieve information about a GitHub organization
+
+<details>
+  <summary>Click to expand!</summary>
 
 ```
-$ gpe user Mikeost
+$ gpe org MikeostCorp -s full_name -d asc
 
-Repo name: github-profile-explorer
-Repo description: CLI utility for exploring GitHub profiles and repositories.
-Repo topics: explorer github statistics 
-Repo last update: 2024-01-27T22:14:09Z
-Repo language: Rust
-Repo count of stars: 0
-Repo count of forks: 0
-=======================================================
-Repo name: MatPlotLibPython
-Repo description: Data visualization using the Matplotlib
-Repo topics: charts matplotlib python statistics 
-Repo last update: 2023-02-10T15:23:41Z
-Repo language: Python
-Repo count of stars: 3
-Repo count of forks: 1
-=======================================================
-Repo name: Sudoku-Solver
-Repo description: Simple sudoku solver
-Repo topics: backtracking-algorithm cpp sudoku-solver 
-Repo last update: 2023-06-28T12:36:00Z
-Repo language: C++
-Repo count of stars: 0
-Repo count of forks: 0
-=======================================================
-...
+--------------------------------------------------------
+        Repo name: Gradify
+Description: Information system for accounting for the work of an education institution
+Topics: college, database-management-system, information-system, learning
+Last update: 2023-12-11T19:46:06Z
+Language: C++
+Count of stars: 4
+Count of forks: 1
+--------------------------------------------------------
+--------------------------------------------------------
+        Repo name: ipCalculator
+Description: ipCalculator
+Topics: N/A
+Last update: 2022-09-20T06:49:45Z
+Language: C++
+Count of stars: 1
+Count of forks: 0
+--------------------------------------------------------
+--------------------------------------------------------
+        Repo name: Math-Algorithms
+Description: Math library with algorithms for c++
+Topics: algorithms, cpp, math, mathematics
+Last update: 2023-09-06T04:40:24Z
+Language: C++
+Count of stars: 6
+Count of forks: 0
+--------------------------------------------------------
 ```
+
+</details>
+
+### Example of retrieve information about a GitHub user
+
+<details>
+  <summary>Click to expand!</summary>
+
+```
+$ gpe user Mikeost -s pushed -d desc -c 5
+
+--------------------------------------------------------
+        Repo name: github-profile-explorer
+Description: CLI utility for exploring GitHub profiles and repositories.
+Topics: explorer, github, statistics
+Last update: 2024-02-01T13:52:50Z
+Language: Rust
+Count of stars: 0
+Count of forks: 0
+--------------------------------------------------------
+--------------------------------------------------------
+        Repo name: mikeost.github.io
+Description: website
+Topics: website
+Last update: 2023-12-31T21:14:59Z
+Language: HTML
+Count of stars: 0
+Count of forks: 0
+--------------------------------------------------------
+--------------------------------------------------------
+        Repo name: developer-roadmap
+Description: Interactive roadmaps, guides and other educational content to help developers grow in their careers.
+Topics: N/A
+Last update: 2023-08-29T17:35:38Z
+Language: TypeScript
+Count of stars: 0
+Count of forks: 0
+--------------------------------------------------------
+--------------------------------------------------------
+        Repo name: arduino-projects
+Description: arduino projects
+Topics: arduino, cpp
+Last update: 2023-07-26T16:47:24Z
+Language: C++
+Count of stars: 0
+Count of forks: 0
+--------------------------------------------------------
+--------------------------------------------------------
+        Repo name: Sudoku-Solver
+Description: Simple sudoku solver
+Topics: backtracking-algorithm, cpp, sudoku-solver
+Last update: 2023-06-28T12:36:00Z
+Language: C++
+Count of stars: 0
+Count of forks: 0
+--------------------------------------------------------
+```
+
+</details>

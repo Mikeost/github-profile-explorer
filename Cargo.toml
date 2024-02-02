@@ -1,6 +1,6 @@
 [package]
 name = "github-profile-explorer"
-version = "0.2.0"
+version = "1.0.0"
 edition = "2021"
 
 [[bin]]
@@ -8,6 +8,7 @@ name = "gpe"
 path = "src/main.rs"
 
 [dependencies]
+clap = { version = "4.4.18", features = ["derive"] }
 reqwest = { version = "0.11.23", features = ["blocking"] }
 serde = { version = "1.0.195", features = ["derive"] }
 serde_json = "1.0"

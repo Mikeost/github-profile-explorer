@@ -5,33 +5,14 @@ mod tests {
     use super::*;
 
     #[test]
-    fn config_build_all_args() {
-        let args = vec![
-            String::from("program_name"),
-            String::from("org"),
-            String::from("MikeostCorp"),
-        ];
-
-        let result = github_profile_explorer::Config::build(&args);
-        assert!(result.is_ok());
-    }
-
-    #[test]
-    fn config_build_not_all_args() {
-        let args = vec![
-            String::from("program_name"),
-            String::from("org"),
-        ];
-
-        let result = github_profile_explorer::Config::build(&args);
-        assert!(result.is_err());
-    }
-
-    #[test]
     fn invalid_request_type() {
         let config = github_profile_explorer::Config {
             request: String::from("invalid_type"),
             name: String::from("test_name"),
+            sort: String::from("pushed"),
+            direction: String::from("desk"),
+            count_per_page: 114,
+            page_number: 2,
         };
 
         let result = github_profile_explorer::run(config);
