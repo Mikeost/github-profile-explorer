@@ -1,6 +1,9 @@
-use std::process;
-use github_profile_explorer::Config;
 use clap::Parser;
+use github_profile_explorer::Config;
+use std::process;
+
+mod cli;
+use github_profile_explorer::ProfileInfo;
 
 fn main() {
     let args: Config = Config::parse();

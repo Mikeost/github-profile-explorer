@@ -22,7 +22,7 @@ GitHub Profile Explorer is a command-line interface tool that allows you to retr
 
 - Fetch public details about GitHub users and organizations.
 - List repositories and their details.
-- Perform various actions through a simple command-line interface.
+- Performing various actions through a simple, elegant terminal interface.
 
 ## Usage
 
@@ -51,101 +51,40 @@ gpe <REQUEST> <NAME> [OPTIONS]
 | Help | `-h, --help` | Print help |
 | Verion | `-V, --version` | Print version |
 
+## Interface control
+
+| Command | Description |
+| ------- | ----------- |
+| `Esc` | Quit the program |
+| `↑` | Move selection up |
+| `↓` | Move selection down |
+| `→` | Switch to the next color scheme |
+| `←` | Switch to the previous color scheme |
 
 ## Examples
-
-### Example of retrieve information about a GitHub organization
-
-<details>
-  <summary>Click to expand!</summary>
-
-```
-$ gpe org MikeostCorp -s full_name -d asc
-
---------------------------------------------------------
-        Repo name: Gradify
-Description: Information system for accounting for the work of an education institution
-Topics: college, database-management-system, information-system, learning
-Last update: 2023-12-11T19:46:06Z
-Language: C++
-Count of stars: 4
-Count of forks: 1
---------------------------------------------------------
---------------------------------------------------------
-        Repo name: ipCalculator
-Description: ipCalculator
-Topics: N/A
-Last update: 2022-09-20T06:49:45Z
-Language: C++
-Count of stars: 1
-Count of forks: 0
---------------------------------------------------------
---------------------------------------------------------
-        Repo name: Math-Algorithms
-Description: Math library with algorithms for c++
-Topics: algorithms, cpp, math, mathematics
-Last update: 2023-09-06T04:40:24Z
-Language: C++
-Count of stars: 6
-Count of forks: 0
---------------------------------------------------------
-```
-
-</details>
 
 ### Example of retrieve information about a GitHub user
 
 <details>
   <summary>Click to expand!</summary>
 
+```bash
+$ gpe user Mikeost -s pushed -d desc
 ```
-$ gpe user Mikeost -s pushed -d desc -c 5
 
---------------------------------------------------------
-        Repo name: github-profile-explorer
-Description: CLI utility for exploring GitHub profiles and repositories.
-Topics: explorer, github, statistics
-Last update: 2024-02-01T13:52:50Z
-Language: Rust
-Count of stars: 0
-Count of forks: 0
---------------------------------------------------------
---------------------------------------------------------
-        Repo name: mikeost.github.io
-Description: website
-Topics: website
-Last update: 2023-12-31T21:14:59Z
-Language: HTML
-Count of stars: 0
-Count of forks: 0
---------------------------------------------------------
---------------------------------------------------------
-        Repo name: developer-roadmap
-Description: Interactive roadmaps, guides and other educational content to help developers grow in their careers.
-Topics: N/A
-Last update: 2023-08-29T17:35:38Z
-Language: TypeScript
-Count of stars: 0
-Count of forks: 0
---------------------------------------------------------
---------------------------------------------------------
-        Repo name: arduino-projects
-Description: arduino projects
-Topics: arduino, cpp
-Last update: 2023-07-26T16:47:24Z
-Language: C++
-Count of stars: 0
-Count of forks: 0
---------------------------------------------------------
---------------------------------------------------------
-        Repo name: Sudoku-Solver
-Description: Simple sudoku solver
-Topics: backtracking-algorithm, cpp, sudoku-solver
-Last update: 2023-06-28T12:36:00Z
-Language: C++
-Count of stars: 0
-Count of forks: 0
---------------------------------------------------------
+![Example of user info](img/gpe_user.png)
+
+</details>
+
+### Example of retrieve information about a GitHub organization
+
+<details>
+  <summary>Click to expand!</summary>
+
+```bash
+$ gpe org MikeostCorp -s full_name -d asc
 ```
+
+![Example of org info](img/gpe_org.png)
 
 </details>
