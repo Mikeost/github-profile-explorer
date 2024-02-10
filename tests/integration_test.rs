@@ -11,8 +11,6 @@ mod tests {
             name: String::from("test_name"),
             sort: String::from("pushed"),
             direction: String::from("desk"),
-            count_per_page: 114,
-            page_number: 2,
         };
 
         let result = github_profile_explorer::run(config);
