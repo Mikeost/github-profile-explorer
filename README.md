@@ -26,12 +26,17 @@ GitHub Profile Explorer is a command-line interface tool that allows you to retr
 
 ## Usage
 
-To get started, run the following commands:
+Install:
 
 ```bash
 git clone https://github.com/Mikeost/github-profile-explorer.git
 cd github-profile-explorer
 cargo install --path .
+```
+
+Run program:
+
+```bash
 gpe <REQUEST> <NAME> [OPTIONS]
 ```
 
@@ -46,8 +51,6 @@ gpe <REQUEST> <NAME> [OPTIONS]
 | ------ | ------- | ----------- |
 | Sort | `-s, --sort <SORT>` | The property to sort the results by (created/updated/pushed/full_name) [default: created] |
 | Direction | `-d, --direction <DIRECTION>` | The order to sort by (asc/desc) [default: desc] |
-| Count Per Page | `-c, --count-per-page <COUNT_PER_PAGE>` | Number of results per page [default: 30, max: 100] |
-| Page Number | `-p, --page-number <PAGE_NUMBER>` | Number of page [default: 1] |
 | Help | `-h, --help` | Print help |
 | Verion | `-V, --version` | Print version |
 
@@ -69,7 +72,7 @@ gpe <REQUEST> <NAME> [OPTIONS]
   <summary>Click to expand!</summary>
 
 ```bash
-$ gpe user Mikeost -s pushed -d desc
+gpe user Mikeost -s pushed -d desc
 ```
 
 ![Example of user info](img/gpe_user.png)
@@ -82,7 +85,7 @@ $ gpe user Mikeost -s pushed -d desc
   <summary>Click to expand!</summary>
 
 ```bash
-$ gpe org MikeostCorp -s full_name -d asc
+gpe org MikeostCorp -s full_name -d asc
 ```
 
 ![Example of org info](img/gpe_org.png)

@@ -6,7 +6,7 @@ use crossterm::{
 use ratatui::prelude::*;
 use std::{error::Error, io};
 
-use crate::ProfileInfo;
+use crate::RepositoryInfo;
 
 mod app;
 use app::App;
@@ -14,7 +14,7 @@ use app::App;
 mod ui;
 use ui::ui;
 
-pub fn run(profile_info: Vec<ProfileInfo>) -> Result<(), Box<dyn Error>> {
+pub fn run(profile_info: Vec<RepositoryInfo>) -> Result<(), Box<dyn Error>> {
     enable_raw_mode()?;
     let mut stdout = io::stdout();
     execute!(stdout, EnterAlternateScreen, EnableMouseCapture)?;

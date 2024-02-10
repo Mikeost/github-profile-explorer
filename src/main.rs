@@ -3,7 +3,7 @@ use github_profile_explorer::Config;
 use std::process;
 
 mod cli;
-use github_profile_explorer::ProfileInfo;
+use github_profile_explorer::RepositoryInfo;
 
 fn main() {
     let args: Config = Config::parse();

@@ -1,4 +1,4 @@
-use crate::ProfileInfo;
+use crate::RepositoryInfo;
 use ratatui::widgets::*;
 use unicode_width::{UnicodeWidthChar, UnicodeWidthStr};
 
@@ -8,7 +8,7 @@ const ITEM_HEIGHT: usize = 4;
 
 pub struct App {
     pub state: TableState,
-    pub items: Vec<ProfileInfo>,
+    pub items: Vec<RepositoryInfo>,
     pub longest_item_lens: (u16, u16, u16, u16, u16, u16, u16),
     pub scroll_state: ScrollbarState,
     pub colors: ui::TableColors,
@@ -16,7 +16,7 @@ pub struct App {
 }
 
 impl App {
-    pub fn new(profile_info: Vec<ProfileInfo>) -> App {
+    pub fn new(profile_info: Vec<RepositoryInfo>) -> App {
         App {
             state: TableState::default().with_selected(0),
             longest_item_lens: constraint_len_calculator(&profile_info),
@@ -71,10 +71,10 @@ impl App {
     }
 }
 
-fn constraint_len_calculator(items: &Vec<ProfileInfo>) -> (u16, u16, u16, u16, u16, u16, u16) {
+fn constraint_len_calculator(items: &Vec<RepositoryInfo>) -> (u16, u16, u16, u16, u16, u16, u16) {
     let repo_name_len = items
         .iter()
-        .filter_map(|info| info.repo_name().map(String::from))
+        .filter_map(|info| info.name().map(String::from))
         .flat_map(|s| {
             s.lines()
                 .map(|line| UnicodeWidthStr::width(line))
@@ -85,7 +85,7 @@ fn constraint_len_calculator(items: &Vec<ProfileInfo>) -> (u16, u16, u16, u16, u
 
     let repo_description_len = items
         .iter()
-        .filter_map(|info| info.repo_description().map(String::from))
+        .filter_map(|info| info.description().map(String::from))
         .flat_map(|s| {
             s.lines()
                 .map(|line| UnicodeWidthStr::width(line))
@@ -105,7 +105,7 @@ fn constraint_len_calculator(items: &Vec<ProfileInfo>) -> (u16, u16, u16, u16, u
 
     let repo_last_update_len = items
         .iter()
-        .filter_map(|info| info.repo_last_update().map(String::from))
+        .filter_map(|info| info.last_update().map(String::from))
         .flat_map(|s| {
             s.lines()
                 .map(|line| UnicodeWidthStr::width(line))
@@ -116,7 +116,7 @@ fn constraint_len_calculator(items: &Vec<ProfileInfo>) -> (u16, u16, u16, u16, u
 
     let repo_language_len = items
         .iter()
-        .filter_map(|info| info.repo_language().map(String::from))
+        .filter_map(|info| info.language().map(String::from))
         .flat_map(|s| {
             s.lines()
                 .map(|line| UnicodeWidthStr::width(line))
